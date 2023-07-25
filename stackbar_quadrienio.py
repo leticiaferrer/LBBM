@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 # Ler o arquivo CSV
-df = pd.read_csv('quadrienio.csv')
+df = pd.read_csv('c:/Users/LBBM/Documents/Python_files/\Quadriênio/quadrienio.csv')
 df = df[:-4]
 
 # Remover valores nulos (NaN) do DataFrame
@@ -25,18 +25,33 @@ df = df.sort_values(by='Categoria')
 #Gráfico interativo
 fig = px.bar(df, x='ANO', y='QUANTIDADE', color='Categoria', barmode='stack',
              labels={'QUANTIDADE': 'Quantidade', 'ANO': 'Ano', 'NÍVEL': 'Nível', 'TIPO': 'Tipo'},
-             color_discrete_sequence=['#381787',"#6528F7", "#A076F9","#D7BBF5"],
-             title='Quadriênio 2017-2023')
+             color_discrete_sequence=['#B3C890',"#DBDFAA", "#749BC2","#91C8E4"],
+             title='Quadriênio 2017-2023'
+            )
 
 #Legendas
 fig.update_layout(
-    legend_title_text='Legenda',
-    legend=dict(
-        title_font=dict(size=14),
-        font=dict(size=12),
+    title_font=dict(size=24),         
+    xaxis_title="Ano",      
+    xaxis=dict(
+        tickfont=dict(size=20, family='Arial, bold'),
+        title_font=dict(size=24),
+        title_standoff=40
+    ), 
+    yaxis_title="Quantidade",        
+    yaxis=dict(
+        title_font=dict(size=24, family='Arial, bold'),     
+        tickfont=dict(size=20),
+        title_standoff=40,        
     ),
-    yaxis_title='Quantidade',       # Título do eixo y (quantidade)
+    legend_title_text='Legenda',      
+    legend=dict(
+        title_font=dict(size=25),     
+        font=dict(size=20)            
+    )
 )
 
 # Salvar o gráfico interativo em um arquivo HTML
-fig.write_html('stackbar_quadrienio.html')
+fig.write_html('stackbar_quadrienio12.html')
+
+
